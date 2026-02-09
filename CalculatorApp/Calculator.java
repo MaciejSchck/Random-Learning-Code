@@ -196,7 +196,7 @@ public class Calculator {
         frame.setVisible(true);
     }
 
-    // Resetting values assigned to variables after a finished operation (after hitting the "=" button)
+    // Resetting values assigned to variables to default after a finished operation (after hitting the "=" button)
     void clearAll() {
         A = "0";
         operator = null;
