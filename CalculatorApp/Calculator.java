@@ -98,7 +98,7 @@ public class Calculator {
                     JButton button = (JButton) e.getSource();
                     String buttonValue = button.getText();
 
-                    // Here the loop assigns function to buttons contained in the orangeSymbols array
+                    // Here the for loop assigns function to buttons contained in the orangeSymbols array
                     if (Arrays.asList(orangeSymbols).contains(buttonValue)) {
                         if (buttonValue == "=") {
                             if (A != null) {
@@ -106,17 +106,21 @@ public class Calculator {
                                 double numA = Double.parseDouble(A);
                                 double numB = Double.parseDouble(B);
 
-                                if (operator == "+") {
-                                    displayLabel.setText(removeZeroDecimal(numA+numB));
-                                }
-                                else if (operator == "-") {
-                                    displayLabel.setText(removeZeroDecimal(numA-numB));
-                                }
-                                else if (operator == "×") {
-                                    displayLabel.setText(removeZeroDecimal(numA*numB));
-                                }
-                                else if (operator == "÷") {
-                                    displayLabel.setText(removeZeroDecimal(numA/numB));
+                                switch (operator) {
+                                    case "+":
+                                        displayLabel.setText(removeZeroDecimal(numA + numB));
+                                        break;
+                                    case "-":
+                                        displayLabel.setText(removeZeroDecimal(numA - numB));
+                                        break;
+
+                                    case "×":
+                                        displayLabel.setText(removeZeroDecimal(numA * numB));
+                                        break;
+
+                                    case "÷":
+                                        displayLabel.setText(removeZeroDecimal(numA / numB));
+                                        break;
                                 }
                                 clearAll();
                             }
@@ -133,61 +137,60 @@ public class Calculator {
 
                     // Here the loop assigns function to buttons contained in the lightGraySymbols array
                     else if (Arrays.asList(lightGraySymbols).contains(buttonValue)) {
-                        if (buttonValue == "AC") {
-                            clearAll();
-                            displayLabel.setText("0");
-                        }
-                        else if (buttonValue == "%") {
-                            double numDisplay = Double.parseDouble(displayLabel.getText());
-                            displayLabel.setText(removeZeroDecimal(numDisplay/100));
-                        }
-                        else if (buttonValue == "Del") {
-                            String string = displayLabel.getText();
-                            displayLabel.setText("");
-                            if (string.length()>1) {
-                                for (int i = 0; i < string.length() - 1; i++) {
+                        switch (buttonValue) {
+                            case "AC":
+                                clearAll();
+                                displayLabel.setText("0");
+                                break;
+                            case "%":
+                                double numDisplay = Double.parseDouble(displayLabel.getText());
+                                displayLabel.setText(removeZeroDecimal(numDisplay / 100));
+                                break;
+                            case "Del":
+                                String string = displayLabel.getText();
+                                displayLabel.setText("");
+                                if (string.length()>1) {
+                                  for (int i = 0; i < string.length() - 1; i++) {
                                     displayLabel.setText(displayLabel.getText() + string.charAt(i));
+                                  }
                                 }
-                            }
-                            else {displayLabel.setText("0");}
+                                else {displayLabel.setText("0");}
+                                break;
                         }
                     }
 
                     // Here the loop assigns function to buttons not contained in any array (basically every other button)
                     else {
-                        if (buttonValue == ".") {
-                            if (!displayLabel.getText().contains(buttonValue)) {
-                                displayLabel.setText(displayLabel.getText() + buttonValue);
-                            }
+                        switch (buttonValue) {
+                            case ".":
+                                if (!displayLabel.getText().contains(buttonValue)) {
+                                    displayLabel.setText(displayLabel.getText() + buttonValue);
+                                }
+                                break;
+                            case "x²":
+                                double numDisplay1 = Double.parseDouble(displayLabel.getText());
+                                displayLabel.setText(removeZeroDecimal(Math.pow(numDisplay1, 2)));
+                                break;
+                            case "√":
+                                double numDisplay2 = Double.parseDouble(displayLabel.getText());
+                                displayLabel.setText(removeZeroDecimal(Math.pow(numDisplay2, 0.5)));
+                                break;
+                            case "π":
+                                displayLabel.setText("3.14159265");
+                                break;
+                            case "+/-":
+                                double numDisplay3 = Double.parseDouble(displayLabel.getText());
+                                displayLabel.setText(removeZeroDecimal(numDisplay3 * -1));
+                                break;
+                            case "00":
+                                if (displayLabel.getText() != "0") {
+                                    displayLabel.setText(displayLabel.getText() + "00");}
+                                break;
                         }
-                        else if (buttonValue == "x²") {
-                            double numDisplay = Double.parseDouble(displayLabel.getText());
-                            displayLabel.setText(removeZeroDecimal(Math.pow(numDisplay,2)));
-                        }
-                        else if (buttonValue == "√") {
-                            double numDisplay = Double.parseDouble(displayLabel.getText());
-                            displayLabel.setText(removeZeroDecimal(Math.pow(numDisplay,0.5)));
-                        }
-                        else if (buttonValue == "π") {
-                            displayLabel.setText("3.14159265");
-                        }
-                        else if (buttonValue == "+/-") {
-                            double numDisplay = Double.parseDouble(displayLabel.getText());
-                            displayLabel.setText(removeZeroDecimal(numDisplay*-1));
-                        }
-                        else if (buttonValue == "00") {
-                            if (displayLabel.getText() != "0") {
-                                displayLabel.setText(displayLabel.getText() + "00");
-                            }
-                        }
-                        else if ("0123456789".contains(buttonValue)) {
-                            if (displayLabel.getText() == "0") {
-                                displayLabel.setText(buttonValue);
-                            }
 
-                            else {
-                                displayLabel.setText(displayLabel.getText() + buttonValue);
-                            }
+                        if ("0123456789".contains(buttonValue)) {
+                            if (displayLabel.getText() == "0") {displayLabel.setText(buttonValue);}
+                            else {displayLabel.setText(displayLabel.getText() + buttonValue);}
                         }
                     }
                 }
