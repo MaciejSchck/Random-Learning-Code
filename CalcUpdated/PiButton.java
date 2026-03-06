@@ -8,7 +8,7 @@ public class PiButton extends Button{
     }
 
     @Override
-    protected void executeLogic(JLabel displayLabel) {
+    protected void executeLogic(JLabel displayLabel, Variables variable) {
         displayLabel.setText("3.14159265");
     }
 }

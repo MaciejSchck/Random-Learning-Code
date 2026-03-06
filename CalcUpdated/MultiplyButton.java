@@ -8,12 +8,12 @@ public class MultiplyButton extends Button{
     }
 
     @Override
-    protected void executeLogic(JLabel displayLabel) {
-        if (operator == null) {
-            A = displayLabel.getText();
+    protected void executeLogic(JLabel displayLabel, Variables variable) {
+        if (variable.operator == null) {
+            variable.A = displayLabel.getText();
             displayLabel.setText("0");
-            B = "0";
+            variable.B = "0";
         }
-        operator = "×";
+        variable.operator = "×";
     }
 }

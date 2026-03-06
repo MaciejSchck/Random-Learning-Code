@@ -8,7 +8,7 @@ public class SquareButton extends Button {
     }
 
     @Override
-    protected void executeLogic(JLabel displayLabel) {
+    protected void executeLogic(JLabel displayLabel, Variables variable) {
         double numDisplay = Double.parseDouble(displayLabel.getText());
         displayLabel.setText(removeZeroDecimal(Math.pow(numDisplay, 2)));
     }

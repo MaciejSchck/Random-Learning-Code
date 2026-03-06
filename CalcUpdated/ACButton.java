@@ -8,8 +8,8 @@ public class ACButton extends Button {
     }
 
     @Override
-    protected void executeLogic(JLabel displayLabel) {
-        clearAll();
+    protected void executeLogic(JLabel displayLabel, Variables variable) {
+        clearAll(variable);
         displayLabel.setText("0");
     }
 }

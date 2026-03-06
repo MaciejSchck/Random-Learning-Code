@@ -7,9 +7,6 @@ public abstract class Button {
     JButton button;
     Color backgroundColor;
     Color foregroundColor;
-    static String A = "0";
-    static String operator = null;
-    static String B = null;
 
     Button(String symbol, Color backgroundColor, Color foregroundColor) {
         this.symbol = symbol;
@@ -28,9 +25,9 @@ public abstract class Button {
         buttonsPanel.add(button);
     }
 
-    public void addLogic(JLabel displayLabel) {
+    public void addLogic(JLabel displayLabel, Variables variable) {
         button.addActionListener((e)-> {
-            executeLogic(displayLabel);
+            executeLogic(displayLabel, variable);
         });
     }
 
@@ -41,11 +38,11 @@ public abstract class Button {
       return Double.toString(numDisplay);
     }
 
-    protected void clearAll() {
-        A = "0";
-        operator = null;
-        B = null;
+    void clearAll(Variables variable) {
+        variable.A = "0";
+        variable.operator = null;
+        variable.B = null;
     }
 
-    protected abstract void executeLogic(JLabel displayLabel);
+    protected abstract void executeLogic(JLabel displayLabel, Variables variable);
 }

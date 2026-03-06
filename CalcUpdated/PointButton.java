@@ -8,7 +8,7 @@ public class PointButton extends Button{
     }
 
     @Override
-    protected void executeLogic(JLabel displayLabel) {
+    protected void executeLogic(JLabel displayLabel, Variables variable) {
         while (!displayLabel.getText().contains(symbol)) {
                 displayLabel.setText(displayLabel.getText() + symbol);
         }

@@ -8,13 +8,13 @@ public class EqualsButton extends Button{
     }
 
     @Override
-    protected void executeLogic(JLabel displayLabel) {
-        if (A != null) {
-            B = displayLabel.getText();
-            double numA = Double.parseDouble(A);
-            double numB = Double.parseDouble(B);
+    protected void executeLogic(JLabel displayLabel, Variables variable) {
+        if (variable.A != null) {
+            variable.B = displayLabel.getText();
+            double numA = Double.parseDouble(variable.A);
+            double numB = Double.parseDouble(variable.B);
 
-            switch (operator) {
+            switch (variable.operator) {
                case "+":
                 displayLabel.setText(removeZeroDecimal(numA + numB));
                 break;
@@ -31,7 +31,7 @@ public class EqualsButton extends Button{
                 displayLabel.setText(removeZeroDecimal(numA / numB));
                 break;
             }
-            clearAll();
+            clearAll(variable);
         }
     }
 }

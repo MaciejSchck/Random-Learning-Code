@@ -8,7 +8,7 @@ public class DelButton extends Button {
     }
 
     @Override
-    protected void executeLogic(JLabel displayLabel) {
+    protected void executeLogic(JLabel displayLabel, Variables variable) {
         String string = displayLabel.getText();
             displayLabel.setText("");
             if (string.length() > 1) {

@@ -9,7 +9,7 @@ public class DigitButton extends Button {
     }
 
     @Override
-    protected void executeLogic(JLabel displayLabel) {
+    protected void executeLogic(JLabel displayLabel, Variables variable) {
         if (displayLabel.getText() == "0") {
             displayLabel.setText(symbol);
         } else {

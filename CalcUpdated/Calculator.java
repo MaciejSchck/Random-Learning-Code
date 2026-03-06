@@ -3,6 +3,8 @@ import javax.swing.*;
 
 public class Calculator {
 
+
+
     Button[] naciski = {
             new ACButton("AC", Utilities.LightGray, Utilities.Black),
             new DelButton("Del", Utilities.LightGray, Utilities.Black),
@@ -35,17 +37,15 @@ public class Calculator {
     JPanel displayPanel = new JPanel();
     JPanel buttonsPanel = new JPanel();
 
-//    String A = "0";
-//    String operator = null;
-//    String B = null;
-
     Calculator() {
+
+        Variables variable = new Variables();
 
         setupWindow();
 
         for (Button button : naciski) {
             button.initialize(buttonsPanel);
-            button.addLogic(displayLabel);
+            button.addLogic(displayLabel, variable);
         }
         frame.setVisible(true);
     }
@@ -72,113 +72,5 @@ public class Calculator {
         buttonsPanel.setBackground(Utilities.Black);
         frame.add(buttonsPanel);
     }
-
-
-//
-//void tryDoOrangeThings(String buttonValue){
-//    if (buttonValue == "=") {
-//        if (A != null) {
-//        B = displayLabel.getText();
-//        double numA = Double.parseDouble(A);
-//        double numB = Double.parseDouble(B);
-//
-//        switch (operator) {
-//            case "+":
-//                displayLabel.setText(removeZeroDecimal(numA + numB));
-//                break;
-//            case "-":
-//                displayLabel.setText(removeZeroDecimal(numA - numB));
-//                break;
-//
-//            case "×":
-//                displayLabel.setText(removeZeroDecimal(numA * numB));
-//                break;
-//
-//            case "÷":
-//                displayLabel.setText(removeZeroDecimal(numA / numB));
-//                break;
-//        }
-//clearAll();
-//}
-//    } else if ("+-×÷".contains(buttonValue)) {
-//        if (operator == null) {
-//            A = displayLabel.getText();
-//            displayLabel.setText("0");
-//            B = "0";
-//        }
-//    operator = buttonValue;
-//    }
-//}
-//void tryDoLightGrayThings(String buttonValue) {
-//    switch (buttonValue) {
-//        case "AC":
-//            clearAll();
-//            displayLabel.setText("0");
-//            break;
-//        case "%":
-//            double numDisplay = Double.parseDouble(displayLabel.getText());
-//            displayLabel.setText(removeZeroDecimal(numDisplay / 100));
-//            break;
-//        case "+/-":
-//            double numDisplay3 = Double.parseDouble(displayLabel.getText());
-//            displayLabel.setText(removeZeroDecimal(numDisplay3 * -1));
-//            break;
-//        case "Del":
-//            String string = displayLabel.getText();
-//            displayLabel.setText("");
-//            if (string.length() > 1) {
-//                for (int i = 0; i < string.length() - 1; i++) {
-//                    displayLabel.setText(displayLabel.getText() + string.charAt(i));
-//                }
-//            } else {
-//                displayLabel.setText("0");
-//            }
-//            break;
-//    }
-//}
-//void tryDoOtherThings(String buttonValue){
-//    switch (buttonValue) {
-//        case ".":
-//            if (!displayLabel.getText().contains(buttonValue)) {
-//                displayLabel.setText(displayLabel.getText() + buttonValue);
-//            }
-//            break;
-//        case "x²":
-//            double numDisplay1 = Double.parseDouble(displayLabel.getText());
-//            displayLabel.setText(removeZeroDecimal(Math.pow(numDisplay1, 2)));
-//            break;
-//        case "√":
-//            double numDisplay2 = Double.parseDouble(displayLabel.getText());
-//            displayLabel.setText(removeZeroDecimal(Math.pow(numDisplay2, 0.5)));
-//            break;
-//        case "π":
-//            displayLabel.setText("3.14159265");
-//            break;
-//        case "00":
-//            if (displayLabel.getText() != "0") {
-//                displayLabel.setText(removeZeroDecimal(Double.parseDouble(displayLabel.getText() + "00")));
-//            }
-//            break;
-//    }
-//    if ("0123456789".contains(buttonValue)) {
-//        if (displayLabel.getText() == "0") {
-//            displayLabel.setText(buttonValue);
-//        } else {
-//            displayLabel.setText(displayLabel.getText() + buttonValue);
-//        }
-//    }
-//}
-//void clearAll() {
-//A = "0";
-//operator = null;
-//B = null;
-//}
-//
-//String removeZeroDecimal(double numDisplay) {
-//    if (numDisplay % 1 == 0) {
-//        return Integer.toString((int) numDisplay);
-//    }
-//    return Double.toString(numDisplay);
-//    }
 }
 

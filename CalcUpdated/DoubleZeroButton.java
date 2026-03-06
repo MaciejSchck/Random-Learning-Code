@@ -8,7 +8,7 @@ public class DoubleZeroButton extends Button{
     }
 
     @Override
-    protected void executeLogic(JLabel displayLabel) {
+    protected void executeLogic(JLabel displayLabel, Variables variable) {
         if (displayLabel.getText() != "0") {
                 displayLabel.setText(removeZeroDecimal(Double.parseDouble(displayLabel.getText() + "00")));
         }
